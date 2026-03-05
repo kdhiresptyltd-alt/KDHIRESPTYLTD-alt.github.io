@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://36d44hhbtknlg.ok.kimi.link/sitemap.xml
