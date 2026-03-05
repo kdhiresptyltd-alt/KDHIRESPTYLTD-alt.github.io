@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDHIRESptyltd | Mining Tools & Equipment Supplier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --bg-hover: #1a1a1a;
+            --orange: #f4a261;
+            --orange-light: #f4b06b;
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
+            --border: #2a2a2a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-white);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        .menu-btn {
+            width: 30px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .menu-btn span {
+            width: 100%;
+            height: 2px;
+            background: var(--text-white);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 5%;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(244,162,97,0.1) 0%, transparent 50%);
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .hero-content h1 span {
+            color: var(--orange);
+            display: block;
+        }
+
+        .hero-subtitle {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            padding: 4rem 5% 2rem;
+        }
+
+        .section-label {
+            color: var(--orange);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title span {
+            color: var(--orange);
+        }
+
+        .section-desc {
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Equipment Cards */
+        .equipment-section {
+            padding: 2rem 5% 4rem;
+        }
+
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .equipment-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .equipment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(244, 162, 97, 0.1);
+            border-color: var(--orange);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8);
+        }
+
+        .priority-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--orange);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-icon {
+            position: absolute;
+            bottom: -25px;
+            left: 1.5rem;
+            width: 60px;
+            height: 60px;
+            background: var(--orange);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--bg-dark);
+            box-shadow: 0 10px 20px rgba(244, 162, 97, 0.3);
+        }
+
+        .card-content {
+            padding: 2.5rem 1.5rem 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--text-white);
+        }
+
+        .card-desc {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-features li {
+            color: var(--text-gray);
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .card-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 2px solid var(--orange);
+            color: var(--orange);
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-btn:hover {
+            background: var(--orange);
+            color: var(--bg-dark);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 4rem 5%;
+            background: var(--bg-card);
+            margin: 4rem 5%;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content h2 span {
+            color: var(--orange);
+        }
+
+        .about-content p {
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-white);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        .menu-btn {
+            width: 30px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .menu-btn span {
+            width: 100%;
+            height: 2px;
+            background: var(--text-white);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 5%;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(244,162,97,0.1) 0%, transparent 50%);
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .hero-content h1 span {
+            color: var(--orange);
+            display: block;
+        }
+
+        .hero-subtitle {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            padding: 4rem 5% 2rem;
+        }
+
+        .section-label {
+            color: var(--orange);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title span {
+            color: var(--orange);
+        }
+
+        .section-desc {
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Equipment Cards */
+        .equipment-section {
+            padding: 2rem 5% 4rem;
+        }
+
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .equipment-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .equipment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(244, 162, 97, 0.1);
+            border-color: var(--orange);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8);
+        }
+
+        .priority-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--orange);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-icon {
+            position: absolute;
+            bottom: -25px;
+            left: 1.5rem;
+            width: 60px;
+            height: 60px;
+            background: var(--orange);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--bg-dark);
+            box-shadow: 0 10px 20px rgba(244, 162, 97, 0.3);
+        }
+
+        .card-content {
+            padding: 2.5rem 1.5rem 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--text-white);
+        }
+
+        .card-desc {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-features li {
+            color: var(--text-gray);
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .card-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 2px solid var(--orange);
+            color: var(--orange);
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-btn:hover {
+            background: var(--orange);
+            color: var(--bg-dark);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 4rem 5%;
+            background: var(--bg-card);
+            margin: 4rem 5%;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content h2 span {
+            color: var(--orange);
+        }
+
+        .about-content p {
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        /* Features Grid */
+        .features-section {
+            padding: 4rem 5%;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .feature-box {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-box:hover {
+            border-color: var(--orange);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(244, 162, 97, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: var(--orange);
+        }
+
+        .feature-box h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-white);
+        }
+
+        .feature-box p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .contact-card h3 {
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .phone-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-white);
+            margin: 1rem 0;
+            display: block;
+            text-decoration: none;
+        }
+
+        .hours {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            padding: 1rem 2rem;
+            background: var(--orange);
+            color: var(--bg-dark);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(244, 162, 97, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-gray);
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .equipment-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .phone-number {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--orange);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--orange-light);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">KDHIRES<span>ptyltd</span></a>
+        <div class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-image-container fade-in">
+            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&h=600&fit=crop" alt="Mining Equipment Workshop" class="hero-image">
+        </div>
+        <div class="hero-content">
+            <h1>MINING & <span>OPEN CAST MINING TOOLS</span></h1>
+            <p class="hero-subtitle">Your trusted partner for welding equipment, hydraulic systems, and mining machinery spares. Quality tools for demanding operations.</p>
+        </div>
+    </section>
+
+    <!-- Equipment & Services Section -->
+    <section class="section-header">
+        <span class="section-label">What We Offer</span>
+        <h2 class="section-title">OUR EQUIPMENT & <span>SERVICES</span></h2>
+        <p class="section-desc">Comprehensive solutions for your mining operations. From hydraulic systems to safety gear, we provide everything you need to keep your operations running smoothly.</p>
+    </section>
+
+    <section class="equipment-section">
+        <div class="equipment-grid">
+            
+            <!-- Welding Equipment Card -->
+            <div class="equipment-card fade-in">
+                <div class="card-image" style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&h=400&fit=crop" alt="Welding Equipment">
+                    <div class="card-icon">🔥</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Welding Equipment</h3>
+                    <p class="card-desc">Professional CO2 welding machines and accessories for industrial applications.</p>
+                    <ul class="card-features">
+                        <li>Mobile CO2 Welding</li>
+                        <li>Welding Machines</li>
+                        <li>Welding Electrodes/Wire</li>
+                        <li>Welding Discs</li>
+                        <li>Cutting Torch</li>
+                    </ul>
+                    <a href="https://wa.me/27685204813" class="whatsapp-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12c0 1.82.49 3.53 1.35 5L2 22l5.09-1.35C8.47 21.51 10.18 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.66 0-3.22-.51-4.52-1.38l-.32-.2-3.03.8.81-2.95-.21-.33A7.88 7.88 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.24-5.78c-.23-.12-1.37-.68-1.58-.75-.21-.08-.36-.12-.51.12-.15.23-.59.75-.72.9-.13.15-.26.17-.49.06-.23-.12-.97-.36-1.85-1.14-.68-.61-1.14-1.36-1.27-1.59-.13-.23-.01-.35.1-.46.1-.1.23-.26.35-.39.12-.13.15-.23.23-.38.08-.15.04-.28-.02-.39-.06-.11-.51-1.23-.7-1.68-.18-.44-.37-.38-.51-.39-.13 0-.28 0-.43 0-.15 0-.39.06-.59.28-.2.23-.76.74-.76 1.81s.78 2.1.89 2.25c.11.15 1.54 2.35 3.74 3.29.52.23.93.36 1.25.46.52.17 1 .14 1.38.09.42-.06 1.37-.56 1.56-1.1.2-.54.2-1 .14-1.1-.06-.1-.23-.15-.46-.27z"/>
+                        </svg>
+                        Inquire on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hydraulic Systems Card -->
+            <div class="equipment-card fade-in">
+                <div class="card-image" style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop" alt="Hydraulic Systems">
+                    <span class="priority-badge">PRIORITY</span>
+                    <div class="card-icon">💧</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Hydraulic Systems</h3>
+                    <p class="card-desc">High-pressure hydraulic systems, pipes, fittings, and accessories for heavy machinery.</p>
+                    <ul class="card-features">
+                        <li>Hydraulic Pipes</li>
+                        <li>Hydraulic Fittings</li>
+                        <li>Hydraulic Hoses</li>
+                        <li>Hydraulic Pumps</li>
+                        <li>System Components</li>
+                    </ul>
+                    <a href="https://wa.me/27685204813" class="whatsapp-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12c0 1.82.49 3.53 1.35 5L2 22l5.09-1.35C8.47 21.51 10.18 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.66 0-3.22-.51-4.52-1.38l-.32-.2-3.03.8.81-2.95-.21-.33A7.88 7.88 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.24-5.78c-.23-.12-1.37-.68-1.58-.75-.21-.08-.36-.12-.51.12-.15.23-.59.75-.72.9-.13.15-.26.17-.49.06-.23-.12-.97-.36-1.85-1.14-.68-.61-1.14-1.36-1.27-1.59-.13-.23-.01-.35.1-.46.1-.1.23-.26.35-.39.12-.13.15-.23.23-.38.08-.15.04-.28-.02-.39-.06-.11-.51-1.23-.7-1.68-.18-.44-.37-.38-.51-.39-.13 0-.28 0-.43 0-.15 0-.39.06-.59.28-.2.23-.76.74-.76 1.81s.78 2.1.89 2.25c.11.15 1.54 2.35 3.74 3.29.52.23.93.36 1.25.46.52.17 1 .14 1.38.09.42-.06 1.37-.56 1.56-1.1.2-.54.2-1 .14-1.1-.06-.1-.23-.15-.46-.27z"/>
+                        </svg>
+                        Inquire on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2>ABOUT <span>KDHIRESptyltd</span></h2>
+            <p>We are a leading supplier of mining tools and equipment, specializing in hydraulic systems, welding solutions, and machinery spares. With years of experience in the industry, we understand the demands of open cast mining operations.</p>
+            <p>Our commitment to quality and customer satisfaction has made us a trusted partner for mining companies across the region. We stock a comprehensive range of products to ensure your operations never stop.</p>
+            <p>From hydraulic pipes to welding equipment, safety gear to lifting accessories, we provide everything you need to keep your mining operations running at peak efficiency.</p>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section-header">
+        <span class="section-label">Our Advantages</span>
+        <h2 class="section-title">WHY <span>CHOOSE US</span></h2>
+    </section>
+
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-box">
+                <div class="feature-icon">✓</div>
+                <h3>Quality Assurance</h3>
+                <p>All our products meet industry standards and undergo rigorous quality checks before delivery.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">💰</div>
+                <h3>Competitive Pricing</h3>
+                <p>We offer the best prices in the market without compromising on quality.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">🚚</div>
+                <h3>Fast Delivery</h3>
+                <p>Quick turnaround times to ensure your operations never face downtime.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">👨‍🔧</div>
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-white);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        .menu-btn {
+            width: 30px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .menu-btn span {
+            width: 100%;
+            height: 2px;
+            background: var(--text-white);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 5%;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(244,162,97,0.1) 0%, transparent 50%);
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .hero-content h1 span {
+            color: var(--orange);
+            display: block;
+        }
+
+        .hero-subtitle {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            padding: 4rem 5% 2rem;
+        }
+
+        .section-label {
+            color: var(--orange);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title span {
+            color: var(--orange);
+        }
+
+        .section-desc {
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Equipment Cards */
+        .equipment-section {
+            padding: 2rem 5% 4rem;
+        }
+
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .equipment-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .equipment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(244, 162, 97, 0.1);
+            border-color: var(--orange);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8);
+        }
+
+        .priority-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--orange);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-icon {
+            position: absolute;
+            bottom: -25px;
+            left: 1.5rem;
+            width: 60px;
+            height: 60px;
+            background: var(--orange);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--bg-dark);
+            box-shadow: 0 10px 20px rgba(244, 162, 97, 0.3);
+        }
+
+        .card-content {
+            padding: 2.5rem 1.5rem 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--text-white);
+        }
+
+        .card-desc {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-features li {
+            color: var(--text-gray);
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .card-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 2px solid var(--orange);
+            color: var(--orange);
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-btn:hover {
+            background: var(--orange);
+            color: var(--bg-dark);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 4rem 5%;
+            background: var(--bg-card);
+            margin: 4rem 5%;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content h2 span {
+            color: var(--orange);
+        }
+
+        .about-content p {
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        /* Features Grid */
+        .features-section {
+            padding: 4rem 5%;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .feature-box {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-box:hover {
+            border-color: var(--orange);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(244, 162, 97, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: var(--orange);
+        }
+
+        .feature-box h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-white);
+        }
+
+        .feature-box p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .contact-card h3 {
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .phone-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-white);
+            margin: 1rem 0;
+            display: block;
+            text-decoration: none;
+        }
+
+        .hours {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            padding: 1rem 2rem;
+            background: var(--orange);
+            color: var(--bg-dark);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(244, 162, 97, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-gray);
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .equipment-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .phone-number {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--orange);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--orange-light);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">KDHIRES<span>ptyltd</span></a>
+        <div class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-image-container fade-in">
+            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&h=600&fit=crop" alt="Mining Equipment Workshop" class="hero-image">
+        </div>
+        <div class="hero-content">
+            <h1>MINING & <span>OPEN CAST MINING TOOLS</span></h1>
+            <p class="hero-subtitle">Your trusted partner for welding equipment, hydraulic systems, and mining machinery spares. Quality tools for demanding operations.</p>
+        </div>
+    </section>
+
+    <!-- Equipment & Services Section -->
+    <section class="section-header">
+        <span class="section-label">What We Offer</span>
+        <h2 class="section-title">OUR EQUIPMENT & <span>SERVICES</span></h2>
+        <p class="section-desc">Comprehensive solutions for your mining operations. From hydraulic systems to safety gear, we provide everything you need to keep your operations running smoothly.</p>
+    </section>
+
+    <section class="equipment-section">
+        <div class="equipment-grid">
+            
+            <!-- Welding Equipment Card -->
+            <div class="equipment-card fade-in">
+                <div class="card-image" style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&h=400&fit=crop" alt="Welding Equipment">
+                    <div class="card-icon">🔥</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Welding Equipment</h3>
+                    <p class="card-desc">Professional CO2 welding machines and accessories for industrial applications.</p>
+                    <ul class="card-features">
+                        <li>Mobile CO2 Welding</li>
+                        <li>Welding Machines</li>
+                        <li>Welding Electrodes/Wire</li>
+                        <li>Welding Discs</li>
+                        <li>Cutting Torch</li>
+                    </ul>
+                    <a href="https://wa.me/27685204813" class="whatsapp-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12c0 1.82.49 3.53 1.35 5L2 22l5.09-1.35C8.47 21.51 10.18 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.66 0-3.22-.51-4.52-1.38l-.32-.2-3.03.8.81-2.95-.21-.33A7.88 7.88 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.24-5.78c-.23-.12-1.37-.68-1.58-.75-.21-.08-.36-.12-.51.12-.15.23-.59.75-.72.9-.13.15-.26.17-.49.06-.23-.12-.97-.36-1.85-1.14-.68-.61-1.14-1.36-1.27-1.59-.13-.23-.01-.35.1-.46.1-.1.23-.26.35-.39.12-.13.15-.23.23-.38.08-.15.04-.28-.02-.39-.06-.11-.51-1.23-.7-1.68-.18-.44-.37-.38-.51-.39-.13 0-.28 0-.43 0-.15 0-.39.06-.59.28-.2.23-.76.74-.76 1.81s.78 2.1.89 2.25c.11.15 1.54 2.35 3.74 3.29.52.23.93.36 1.25.46.52.17 1 .14 1.38.09.42-.06 1.37-.56 1.56-1.1.2-.54.2-1 .14-1.1-.06-.1-.23-.15-.46-.27z"/>
+                        </svg>
+                        Inquire on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hydraulic Systems Card -->
+            <div class="equipment-card fade-in">
+                <div class="card-image" style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop" alt="Hydraulic Systems">
+                    <span class="priority-badge">PRIORITY</span>
+                    <div class="card-icon">💧</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Hydraulic Systems</h3>
+                    <p class="card-desc">High-pressure hydraulic systems, pipes, fittings, and accessories for heavy machinery.</p>
+                    <ul class="card-features">
+                        <li>Hydraulic Pipes</li>
+                        <li>Hydraulic Fittings</li>
+                        <li>Hydraulic Hoses</li>
+                        <li>Hydraulic Pumps</li>
+                        <li>System Components</li>
+                    </ul>
+                    <a href="https://wa.me/27685204813" class="whatsapp-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12c0 1.82.49 3.53 1.35 5L2 22l5.09-1.35C8.47 21.51 10.18 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.66 0-3.22-.51-4.52-1.38l-.32-.2-3.03.8.81-2.95-.21-.33A7.88 7.88 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.24-5.78c-.23-.12-1.37-.68-1.58-.75-.21-.08-.36-.12-.51.12-.15.23-.59.75-.72.9-.13.15-.26.17-.49.06-.23-.12-.97-.36-1.85-1.14-.68-.61-1.14-1.36-1.27-1.59-.13-.23-.01-.35.1-.46.1-.1.23-.26.35-.39.12-.13.15-.23.23-.38.08-.15.04-.28-.02-.39-.06-.11-.51-1.23-.7-1.68-.18-.44-.37-.38-.51-.39-.13 0-.28 0-.43 0-.15 0-.39.06-.59.28-.2.23-.76.74-.76 1.81s.78 2.1.89 2.25c.11.15 1.54 2.35 3.74 3.29.52.23.93.36 1.25.46.52.17 1 .14 1.38.09.42-.06 1.37-.56 1.56-1.1.2-.54.2-1 .14-1.1-.06-.1-.23-.15-.46-.27z"/>
+                        </svg>
+                        Inquire on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2>ABOUT <span>KDHIRESptyltd</span></h2>
+            <p>We are a leading supplier of mining tools and equipment, specializing in hydraulic systems, welding solutions, and machinery spares. With years of experience in the industry, we understand the demands of open cast mining operations.</p>
+            <p>Our commitment to quality and customer satisfaction has made us a trusted partner for mining companies across the region. We stock a comprehensive range of products to ensure your operations never stop.</p>
+            <p>From hydraulic pipes to welding equipment, safety gear to lifting accessories, we provide everything you need to keep your mining operations running at peak efficiency.</p>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section-header">
+        <span class="section-label">Our Advantages</span>
+        <h2 class="section-title">WHY <span>CHOOSE US</span></h2>
+    </section>
+
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-box">
+                <div class="feature-icon">✓</div>
+                <h3>Quality Assurance</h3>
+                <p>All our products meet industry standards and undergo rigorous quality checks before delivery.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">💰</div>
+                <h3>Competitive Pricing</h3>
+                <p>We offer the best prices in the market without compromising on quality.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">🚚</div>
+                <h3>Fast Delivery</h3>
+                <p>Quick turnaround times to ensure your operations never face downtime.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">👨‍🔧</div>
+                <h3>Expert Support</h3>
+                <p>Our knowledgeable team is always ready to help you find the right products.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">📦</div>
+                <h3>Wide Range</h3>
+                <p>Comprehensive inventory of mining tools, equipment, and spare parts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <span class="section-label">Get In Touch</span>
+        <h2 class="section-title">CONTACT <span>US</span></h2>
+        <p class="section-desc">Ready to order? Contact us directly on WhatsApp for fast response and personalized service.</p>
+        
+        <div class="contact-card">
+            <h3>WhatsApp Business</h3>
+            <p style="color: var(--text-gray); margin-bottom: 0.5rem;">Fastest way to reach us</p>
+            <a href="https://wa.me/27685204813" class="phone-number">068 520 4813</a>
+            <p class="hours">Mon - Sat: 8AM - 6PM</p>
+            <a href="https://wa.me/27685204813" class="cta-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.82.49 3.53 1.35 5L2 22l5.09-1.35C8.47 21.51 10.18 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.66 0-3.22-.51-4.52-1.38l-.32-.2-3.03.8.81-2.95-.21-.33A7.88 7.88 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.24-5.78c-.23-.12-1.37-.68-1.58-.75-.21-.08-.36-.12-.51.12-.15.23-.59.75-.72.9-.13.15-.26.17-.49.06-.23-.12-.97-.36-1.85-1.14-.68-.61-1.14-1.36-1.27-1.59-.13-.23-.01-.35.1-.46.1-.1.23-.26.35-.39.12-.13.15-.23.23-.38.08-.15.04-.28-.02-.39-.06-.11-.51-1.23-.7-1.68-.18-.44-.37-.38-.51-.39-.13 0-.28 0-.43 0-.15 0-.39.06-.59.28-.2.23-.76.74-.76 1.81s.78 2.1.89 2.25c.11.15 1.54 2.35 3.74 3.29.52.23.93.36 1.25.46.52.17 1 .14 1.38.09.42-.06 1.37-.56 1.56-1.1.2-.54.2-1 .14-1.1-.06-.1-.23-.15-.46-.27z"/>
+                </svg>
+                Chat on WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 KDHIRESptyltd. All rights reserved. | Mining Tools & Equipment Supplier</p>
+    </footer>
+
+    <script>
+        // Smooth scroll animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.equipment-card, .feature-box').forEach((el) => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
